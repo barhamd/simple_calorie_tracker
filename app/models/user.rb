@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  # Added by me, not sure if correct, but following suggestions from railstutorial.org
+  # Update: Appears to be the correct thing
+  has_many :trackers
 end

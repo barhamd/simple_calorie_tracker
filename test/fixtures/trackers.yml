@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  calories: 1
+  consumed_on: 2013-03-08 13:18:37
+
+two:
+  user_id: 1
+  calories: 1
+  consumed_on: 2013-03-08 13:18:37
