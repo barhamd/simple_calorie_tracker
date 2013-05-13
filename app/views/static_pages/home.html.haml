@@ -5,14 +5,17 @@
     = current_user.email
     %ul
       - current_user.trackers.each do |t|
-        %li= t.calories
+        - if t.calories.nil?
+          %li= 'No Calories entered'
+        - else
+          %li= t.calories
         - if t.consumed_on.nil?
           %li= 'No Date Entered'
         - else
           %li= t.consumed_on.strftime("%m/%d/%Y")
     = form_for(@tracker) do |f|
       = f.text_field :calories, placeholder: "Calories"
-      = f.text_field :consumed_on, placeholder: Date.today
+      = f.text_field :consumed_on, :value => Date.today
       = f.submit "Submit"
 - else
   %p A super simple way to track what comes in.
