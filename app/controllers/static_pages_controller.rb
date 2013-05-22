@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if signed_in?
-     @tracker = current_user.trackers.build
+     @tracker = Tracker.new
     end
   end
 
