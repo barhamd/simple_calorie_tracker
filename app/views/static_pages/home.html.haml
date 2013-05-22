@@ -2,27 +2,19 @@
 - if signed_in?
   %div
     %h3 Calorie counter
-    = current_user.email
-    %ul
-      - current_user.trackers.each do |t|
-        - if t.consumed_on.nil?
-          %li= ""
-        - else
-          %li= t.consumed_on.strftime("%m/%d/%Y")
-        - if t.calories.nil?
-          %li= ""
-        - else
-          %li= t.calories
+    Welcome #{current_user.email}!
     = form_for(@tracker) do |f|
       = f.text_field :calories, placeholder: "Calories", :required => true
       = f.text_field :consumed_on, :value => Date.today, :required => true
       = f.submit "Submit"
     %table
       %tr
+        %th ID
         %th Date
         %th Calories
-      - for t in current_user.trackers
+      -current_user.trackers.each do |t|
         %tr
+          %td=t.id
           - if t.consumed_on.nil?
             %td= "?"
           - else
