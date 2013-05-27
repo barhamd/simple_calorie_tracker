@@ -1,27 +1,22 @@
 %h1 Simple Calorie Tracker
-- if signed_in?
-  %div
-    %h3 Calorie counter
-    Welcome #{current_user.email}!
-    = form_for(@tracker) do |f|
-      = f.text_field :calories, placeholder: "Calories", :required => true
-      = f.text_field :consumed_on, :value => Date.today, :required => true
-      = f.submit "Submit"
-    %table
-      %tr
-        %th ID
-        %th Date
-        %th Calories
-      -current_user.trackers.each do |t|
+.well
+  - if signed_in?
+    %div
+      %h3 Calorie counter
+      Welcome #{current_user.email}!
+      = form_for(@tracker) do |f|
+        = f.text_field :calories, placeholder: "Calories", :required => true
+        = f.text_field :consumed_on, :value => Date.today, :required => true
+        = f.submit "Submit"
+      %table.table.table-condensed
         %tr
-          %td=t.id
-          - if t.consumed_on.nil?
-            %td= "?"
-          - else
+          %th ID
+          %th Date
+          %th Calories
+        -current_user.trackers.each do |t|
+          %tr
+            %td=t.id
             %td=t.consumed_on.strftime("%m/%d/%Y")
-          - if t.consumed_on.nil?
-            %td= "?"
-          - else
             %td=t.calories
-- else
-  %p A super simple way to track what comes in.
+  - else
+    %p A super simple way to track what comes in.
