@@ -1,13 +1,21 @@
+%script{:type => 'text/javascript'}
+  $(function() {
+  -data=[]
+  - current_user.trackers.each do |t|
+    -data << t.calories
+  var data = #{data}
+  }
 %h1 Simple Calorie Tracker
 .well
   - if signed_in?
-    %div
+    .data-table
       %h3 Calorie counter
       Welcome #{current_user.email}!
       = form_for(@tracker) do |f|
         = f.text_field :calories, placeholder: "Calories", :required => true
         = f.text_field :consumed_on, :value => Date.today, :required => true
         = f.submit "Submit"
+      #placeholder
       %table.table.table-condensed
         %tr
           %th ID
@@ -20,4 +28,3 @@
             %td=t.calories
   - else
     %p A super simple way to track what comes in.
-#placeholder
