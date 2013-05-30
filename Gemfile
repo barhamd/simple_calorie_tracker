@@ -28,6 +28,8 @@ end
 
 gem 'jquery-rails', '2.0.2'
 
+gem 'flot-rails'
+
 group :production do
   gem 'pg', '0.12.2'
 end
