@@ -2,9 +2,12 @@
   $(function() {
   -data=[]
   - current_user.trackers.each do |t|
-    -data << t.calories
-  var data = #{data}
-  }
+    -date=t.consumed_on.to_time.to_i*1000
+    -calories=t.calories
+    -data << [date,calories]
+  var data = #{data};
+  $.plot($('#placeholder'), [data]);
+  });
 %h1 Simple Calorie Tracker
 .well
   - if signed_in?

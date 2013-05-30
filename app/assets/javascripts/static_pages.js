@@ -3,7 +3,7 @@
 //# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 //#
 
-$(document).ready(function(){
-  var data = [[1, 300], [2, 600], [3, 550] ];
-      $.plot($("#placeholder"), [data]);
-});
+//$(document).ready(function(){
+  //var data = [[1, 300], [2, 600], [3, 550] ];
+      //$.plot($("#placeholder"), [data]);
+//});
