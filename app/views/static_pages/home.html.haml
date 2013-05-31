@@ -1,12 +1,12 @@
 %script{:type => 'text/javascript'}
   $(function() {
   -data=[]
-  - current_user.trackers.each do |t|
+  - current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
     -date=t.consumed_on.to_time.to_i*1000
     -calories=t.calories
     -data << [date,calories]
   var data = #{data};
-  $.plot($("#placeholder"), [data], { yaxis: {}, xaxis: { mode: "time" } });
+  $.plot($("#placeholder"), [data], { xaxis: { mode: "time" } });
   });
 %h1 Simple Calorie Tracker
 .well
@@ -24,7 +24,7 @@
           %th ID
           %th Date
           %th Calories
-        -current_user.trackers.each do |t|
+        -current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
           %tr
             %td=t.id
             %td=t.consumed_on.strftime("%m/%d/%Y")
