@@ -6,7 +6,7 @@
     -calories=t.calories
     -data << [date,calories]
   var data = #{data};
-  $.plot($('#placeholder'), [data]);
+  $.plot($("#placeholder"), [data], { yaxis: {}, xaxis: { mode: "time" } });
   });
 %h1 Simple Calorie Tracker
 .well

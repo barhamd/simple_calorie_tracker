@@ -15,3 +15,4 @@
 //= require_tree .
 //= require jquery.flot
 //= require jquery.flot.resize
+//= require jquery.flot.time
