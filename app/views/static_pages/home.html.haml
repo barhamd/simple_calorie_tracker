@@ -1,11 +1,9 @@
 %script{:type => 'text/javascript'}
   $(function() {
-  -data=[]
+  -data_array = []
   - current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
-    -date=t.consumed_on.to_time.to_i*1000
-    -calories=t.calories
-    -data << [date,calories]
-  var data = #{data};
+    -data_array << t.date_and_calories
+  var data = #{data_array};
   $.plot($("#placeholder"), [data], { xaxis: { mode: "time" } });
   });
 %h1 Simple Calorie Tracker
