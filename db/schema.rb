@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308181837) do
+ActiveRecord::Schema.define(:version => 20140301232521) do
 
-  create_table "trackers", :force => true do |t|
+  create_table "calorie_logs", :force => true do |t|
     t.integer  "user_id"
     t.integer  "calories"
     t.datetime "consumed_on"

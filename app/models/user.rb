@@ -11,5 +11,5 @@ class User < ActiveRecord::Base
 
   # Added by me, not sure if correct, but following suggestions from railstutorial.org
   # Update: Appears to be the correct thing
-  has_many :trackers
+  has_many :calorie_logs
 end

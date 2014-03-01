@@ -1,4 +1,4 @@
-class Tracker < ActiveRecord::Base
+class CalorieLog < ActiveRecord::Base
   attr_accessible :calories, :consumed_on, :user_id
   belongs_to :user
 
@@ -7,7 +7,7 @@ class Tracker < ActiveRecord::Base
     [date,calories]
   end
 
-  #Since I'm summing the calories from multiple trackers, I think this method belongs in the javascript
+  #Since I'm summing the calories from multiple calorie logs, I think this method belongs in the javascript
   def calorie_sum_by_day
 
   end

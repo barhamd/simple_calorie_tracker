@@ -1,9 +1,9 @@
-class TrackersController < ApplicationController
+class CalorieLogsController < ApplicationController
   # before_filter :signed_in_user
 
   def create
-    @tracker = current_user.trackers.build(params[:tracker])
-    if @tracker.save
+    @calorie_log = current_user.calorie_logs.build(params[:calorie_log])
+    if @calorie_log.save
       flash[:success] = "Calories tracked!"
       redirect_to root_path
     else

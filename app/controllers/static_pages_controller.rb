@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if signed_in?
-     @tracker = Tracker.new
+     @calorie_log = CalorieLog.new
     end
   end
 

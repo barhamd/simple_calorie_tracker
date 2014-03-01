@@ -3,7 +3,7 @@
   -#-data_array = []
   -#-previous_date = 0
   -#-summed_calories = 0
-  -#-current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
+  -#-current_user.calorie_logs.sort_by {|obj| obj.consumed_on}.each do |t|
     -#-if t.date_and_calories[0] == previous_date
       -#-summed_calories = previous_calories + t.date_and_calories[1]
       -#-date_and_summed_calories = [previous_date, summed_calories]
@@ -16,7 +16,7 @@
   -data_array = []
   -previous_date = 0
   -previous_data = []
-  -current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
+  -current_user.calorie_logs.sort_by {|obj| obj.consumed_on}.each do |t|
     -if t.date_and_calories[0] == previous_date
       -previous_data[1] = previous_data[1] + t.date_and_calories[1]
     -else
@@ -31,7 +31,7 @@
     .data-table
       %h3 Calorie counter
       Welcome #{current_user.email}!
-      = form_for(@tracker) do |f|
+      = form_for(@calorie_log) do |f|
         = f.text_field :calories, placeholder: "Calories", :required => true
         = f.text_field :consumed_on, :value => Date.today, :required => true
         = f.submit "Submit"
@@ -41,7 +41,7 @@
           %th ID
           %th Date
           %th Calories
-        -current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
+        -current_user.calorie_logs.sort_by {|obj| obj.consumed_on}.each do |t|
           %tr
             %td=t.id
             %td=t.consumed_on.strftime("%m/%d/%Y")
