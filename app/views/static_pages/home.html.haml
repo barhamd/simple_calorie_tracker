@@ -1,18 +1,27 @@
 %script{:type => 'text/javascript'}
   $(function() {
+  -#-data_array = []
+  -#-previous_date = 0
+  -#-summed_calories = 0
+  -#-current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
+    -#-if t.date_and_calories[0] == previous_date
+      -#-summed_calories = previous_calories + t.date_and_calories[1]
+      -#-date_and_summed_calories = [previous_date, summed_calories]
+      -#-data_array << date_and_summed_calories
+    -#-else
+      -#-data_array << t.date_and_calories
+    -#-previous_date = t.date_and_calories[0]
+    -#-previous_calories = t.date_and_calories[1]
+
   -data_array = []
   -previous_date = 0
-  -previous_calories = 0
-  -summed_calories = 0
+  -previous_data = []
   -current_user.trackers.sort_by {|obj| obj.consumed_on}.each do |t|
     -if t.date_and_calories[0] == previous_date
-      -summed_calories = previous_calories + t.date_and_calories[1]
-      -date_and_summed_calories = [previous_date, summed_calories]
-      -data_array << date_and_summed_calories
+      -previous_data[1] = previous_data[1] + t.date_and_calories[1]
     -else
-      -data_array << t.date_and_calories
-    -previous_date = t.date_and_calories[0]
-    -previous_calories = t.date_and_calories[1]
+      -data_array << previous_data
+      -previous_data = t.date_and_calories
   var data = #{data_array};
   $.plot($("#placeholder"), [data], { xaxis: { mode: "time" } });
   });
