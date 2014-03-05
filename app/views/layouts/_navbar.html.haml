@@ -1,0 +1,13 @@
+.masthead
+  %ul.nav.nav-pills.pull-right
+    -if user_signed_in?
+      %li
+        =link_to "#{current_user.email}", '#'
+      %li
+        =link_to 'Sign out', destroy_user_session_path, method: 'delete'
+    -else
+      %li
+        =link_to 'Sign in', new_user_session_path
+      %li.active
+        =link_to 'Register', new_user_registration_path
+  %h1 Simple Calorie Tracker
