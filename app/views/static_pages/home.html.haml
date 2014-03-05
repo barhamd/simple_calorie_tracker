@@ -37,12 +37,10 @@
       #placeholder
       %table.table.table-condensed
         %tr
-          %th ID
           %th Date
           %th Calories
         -current_user.calorie_logs.sort_by {|obj| obj.consumed_on}.each do |t|
           %tr
-            %td=t.id
             %td=t.consumed_on.strftime("%m/%d/%Y")
             %td=t.calories
   - else
