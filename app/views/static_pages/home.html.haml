@@ -23,23 +23,24 @@
       -data_array << previous_data
       -previous_data = calorie_log.date_and_calories
   var data = #{data_array};
-  $.plot($("#placeholder"), [data], { xaxis: { mode: "time" } });
+  $.plot($("#placeholder"), [data], { xaxis: { mode: "time", timeformat: "%m/%d" } });
   });
 .well
   -if signed_in?
     .data-table
       =form_for @new_calorie_log, :html => { :class => 'form-inline' } do |f|
         =f.text_field :calories, placeholder: "Calories", :required => true
-        =f.text_field :consumed_on, :value => Date.today, :required => true
+        =f.text_field :consumed_on, placeholder: Date.today, :value => Date.today, :required => true
         =f.submit "Submit", class: 'btn'
       #placeholder
+      -#TODO Make just the javascript sum calories by day. The list underneath the graph can list all of the last 30 days.
       %table.table.table-condensed
         %tr
           %th Date
           %th Calories
         -@calorie_logs.each do |calorie_log|
           %tr
-            %td=calorie_log.consumed_on.strftime("%m/%d/%Y")
+            %td=calorie_log.consumed_on.strftime("%Y/%m/%d")
             %td=calorie_log.calories
   -else
     %p A super simple way to track what comes in.
