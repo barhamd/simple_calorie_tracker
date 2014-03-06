@@ -3,45 +3,43 @@
   -#-data_array = []
   -#-previous_date = 0
   -#-summed_calories = 0
-  -#-current_user.calorie_logs.sort_by {|obj| obj.consumed_on}.each do |t|
-    -#-if t.date_and_calories[0] == previous_date
-      -#-summed_calories = previous_calories + t.date_and_calories[1]
+  -#-@calorie_logs.each do |calorie_log|
+    -#-if calorie_log.date_and_calories[0] == previous_date
+      -#-summed_calories = previous_calories + calorie_log.date_and_calories[1]
       -#-date_and_summed_calories = [previous_date, summed_calories]
       -#-data_array << date_and_summed_calories
     -#-else
-      -#-data_array << t.date_and_calories
-    -#-previous_date = t.date_and_calories[0]
-    -#-previous_calories = t.date_and_calories[1]
+      -#-data_array << calorie_log.date_and_calories
+    -#-previous_date = calorie_log.date_and_calories[0]
+    -#-previous_calories = calorie_log.date_and_calories[1]
 
   -data_array = []
   -previous_date = 0
   -previous_data = []
-  -current_user.calorie_logs.sort_by {|obj| obj.consumed_on}.each do |t|
-    -if t.date_and_calories[0] == previous_date
-      -previous_data[1] = previous_data[1] + t.date_and_calories[1]
+  -@calorie_logs.each do |calorie_log|
+    -if calorie_log.date_and_calories[0] == previous_date
+      -previous_data[1] = previous_data[1] + calorie_log.date_and_calories[1]
     -else
       -data_array << previous_data
-      -previous_data = t.date_and_calories
+      -previous_data = calorie_log.date_and_calories
   var data = #{data_array};
   $.plot($("#placeholder"), [data], { xaxis: { mode: "time" } });
   });
 .well
-  - if signed_in?
+  -if signed_in?
     .data-table
-      %h3 Calorie counter
-      Welcome #{current_user.email}!
-      = form_for(@calorie_log) do |f|
-        = f.text_field :calories, placeholder: "Calories", :required => true
-        = f.text_field :consumed_on, :value => Date.today, :required => true
-        = f.submit "Submit"
+      =form_for @new_calorie_log, :html => { :class => 'form-inline' } do |f|
+        =f.text_field :calories, placeholder: "Calories", :required => true
+        =f.text_field :consumed_on, :value => Date.today, :required => true
+        =f.submit "Submit", class: 'btn'
       #placeholder
       %table.table.table-condensed
         %tr
           %th Date
           %th Calories
-        -current_user.calorie_logs.sort_by {|obj| obj.consumed_on}.each do |t|
+        -@calorie_logs.each do |calorie_log|
           %tr
-            %td=t.consumed_on.strftime("%m/%d/%Y")
-            %td=t.calories
-  - else
+            %td=calorie_log.consumed_on.strftime("%m/%d/%Y")
+            %td=calorie_log.calories
+  -else
     %p A super simple way to track what comes in.
