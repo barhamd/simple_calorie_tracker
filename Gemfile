@@ -8,6 +8,7 @@ gem 'pry'
 
 group :development do
   gem 'sqlite3', '1.3.5'
+  gem 'awesome_print'
 end
 
 gem 'devise'
