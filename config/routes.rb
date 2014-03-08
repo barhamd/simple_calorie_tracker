@@ -6,7 +6,7 @@ SimpleCalorieTracker::Application.routes.draw do
 
   match '/help', to: 'static_pages#help'
 
-  resource :calorie_logs
+  resources :calorie_logs
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
