@@ -1,0 +1,4 @@
+=form_for @calorie_log, :html => { :class => 'form-inline' } do |f|
+  =f.text_field :calories
+  =f.text_field :consumed_on
+  =f.submit 'Update', class: 'btn'

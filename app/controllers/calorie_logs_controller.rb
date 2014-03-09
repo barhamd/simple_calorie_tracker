@@ -10,4 +10,20 @@ class CalorieLogsController < ApplicationController
       render 'static_pages/home'
     end
   end
+
+  def edit
+    @calorie_log = CalorieLog.find params[:id]
+  end
+
+  def update
+    @calorie_log = CalorieLog.find params[:id]
+    if @calorie_log.update_attributes params[:calorie_log]
+      flash[:success] = "Log updated!"
+      redirect_to :root
+    end
+  end
+
+  def index
+    @calorie_logs = current_user.calorie_logs.order('consumed_on DESC')
+  end
 end
