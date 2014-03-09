@@ -25,5 +25,9 @@ class CalorieLogsController < ApplicationController
 
   def index
     @calorie_logs = current_user.calorie_logs.order('consumed_on DESC')
+    @data_array =[]
+    @calorie_logs.each do |calorie_log|
+      @data_array << [calorie_log.consumed_on.to_time.to_i*1000, calorie_log.calories]
+    end
   end
 end

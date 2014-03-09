@@ -16,28 +16,6 @@
 
 %script{:type => 'text/javascript'}
   $(function() {
-  -#-data_array = []
-  -#-previous_date = 0
-  -#-summed_calories = 0
-  -#-@calorie_logs.each do |calorie_log|
-    -#-if calorie_log.date_and_calories[0] == previous_date
-      -#-summed_calories = previous_calories + calorie_log.date_and_calories[1]
-      -#-date_and_summed_calories = [previous_date, summed_calories]
-      -#-data_array << date_and_summed_calories
-    -#-else
-      -#-data_array << calorie_log.date_and_calories
-    -#-previous_date = calorie_log.date_and_calories[0]
-    -#-previous_calories = calorie_log.date_and_calories[1]
-
-  -data_array = []
-  -previous_date = 0
-  -previous_data = []
-  -@calorie_logs.each do |calorie_log|
-    -if calorie_log.date_and_calories[0] == previous_date
-      -previous_data[1] = previous_data[1] + calorie_log.date_and_calories[1]
-    -else
-      -data_array << previous_data
-      -previous_data = calorie_log.date_and_calories
-  var data = #{data_array};
-  $.plot($("#placeholder"), [data], { xaxis: { mode: "time", timeformat: "%m/%d" } });
+    var data = #{@data_array};
+    $.plot($("#placeholder"), [data], { xaxis: { mode: "time", timeformat: "%m/%d" } });
   });
