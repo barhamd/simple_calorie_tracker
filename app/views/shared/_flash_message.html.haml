@@ -3,5 +3,5 @@
     -name = 'success' if name == :success
     -name = 'error' if name == :warning || name == :alert
     .alert{class: "alert-#{name}"}
-      -#%a.close{href: '#', "data-dismiss" => "alert"}x
+      %a.close{href: '#', "data-dismiss" => "alert"}x
       #{msg}
