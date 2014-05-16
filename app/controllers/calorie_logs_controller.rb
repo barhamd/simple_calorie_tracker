@@ -30,4 +30,11 @@ class CalorieLogsController < ApplicationController
       @data_array << [date.to_time.to_i*1000, calorie_log.sum(&:calories)]
     end
   end
+
+  def destroy
+    @calorie_log = CalorieLog.find params[:id]
+    @calorie_log.destroy
+    redirect_to :root
+  end
+
 end

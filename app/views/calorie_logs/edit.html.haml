@@ -1,4 +1,5 @@
 =form_for @calorie_log, :html => { :class => 'form-inline' } do |f|
   =f.text_field :calories
-  =f.text_field :consumed_on
+  =f.text_field :consumed_on, value: @calorie_log.consumed_on.strftime('%Y-%m-%d')
   =f.submit 'Update', class: 'btn'
+=link_to 'delete', @calorie_log, method: :delete, confirm: "Delete this entry? This can't be undone."
