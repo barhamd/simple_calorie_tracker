@@ -2,4 +2,4 @@
   =f.text_field :calories
   =f.text_field :consumed_on
   =f.submit 'Update', class: 'btn'
-=link_to 'delete', @calorie_log, method: :delete
+=link_to 'delete', @calorie_log, method: :delete, confirm: "Delete this entry? This can't be undone."
