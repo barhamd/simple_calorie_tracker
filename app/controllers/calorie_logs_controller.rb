@@ -12,7 +12,7 @@ class CalorieLogsController < ApplicationController
   end
 
   def edit
-    @calorie_log = CalorieLog.find params[:id]
+    @calorie_log = current_user.calorie_logs.find params[:id]
   end
 
   def update
