@@ -1,15 +1,19 @@
-production:
-  adapter: postgresql
+default: &default
+  adapter:  postgresql
   encoding: unicode
-  database: database_name
   pool: 5
-  username: name_your_user
-  password: password123
+  username: simple_calorie_tracker
+  password:
+  host:     localhost
 
 development:
-  adapter: postgresql
-  database: database_name
+  <<: *default
+  database: simple_calorie_tracker_development
 
 test:
-  adapter: postgresql
-  database: database_name
+  <<: *default
+  database: simple_calorie_tracker_test
+
+production:
+  <<: *default
+  database: simple_calorie_tracker_production
