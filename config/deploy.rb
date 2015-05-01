@@ -1,7 +1,7 @@
 set :application, 'simple_calorie_tracker'
 set :repo_url, 'https://github.com/barhamd/simple_calorie_tracker.git'
 
-set :deploy_to, "/home/deploy/sample-app-auto"
+set :deploy_to, "/home/sct/simple_calorie_tracker"
 
 set :branch, "master"
 
