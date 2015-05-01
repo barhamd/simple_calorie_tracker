@@ -1,0 +1,19 @@
+default: &default
+  adapter:  postgresql
+  encoding: unicode
+  pool: 5
+  username: simple_calorie_tracker
+  password:
+  host:     localhost
+
+development:
+  <<: *default
+  database: simple_calorie_tracker_development
+
+test:
+  <<: *default
+  database: simple_calorie_tracker_test
+
+production:
+  <<: *default
+  database: simple_calorie_tracker_production

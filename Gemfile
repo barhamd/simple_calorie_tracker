@@ -8,8 +8,12 @@ gem 'rails', '3.2.12'
 gem 'pry'
 
 group :development do
-  gem 'sqlite3', '1.3.5'
   gem 'awesome_print'
+  gem 'capistrano', '3.0.1'
+  gem 'capistrano-rails', '1.1.0'
+  gem 'capistrano-rvm', '0.1.0'
+  gem 'capistrano-bundler', '1.0.0'
+  gem 'sqlite3', '1.3.5'
 end
 
 gem 'devise'
