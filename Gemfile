@@ -6,6 +6,7 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'pry'
+gem 'therubyracer'
 
 group :development do
   gem 'awesome_print'
