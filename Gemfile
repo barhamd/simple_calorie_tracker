@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'pry'
 gem 'therubyracer'
+gem 'rake'
 
 group :development do
   gem 'awesome_print'
