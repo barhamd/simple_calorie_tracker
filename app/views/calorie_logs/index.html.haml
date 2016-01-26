@@ -5,12 +5,14 @@
   %tr
     %th Date
     %th Calories
+    %th poop
     %th=link_to 'Home', root_path
 
   -@calorie_logs.each do |calorie_log|
     %tr
       %td=calorie_log.consumed_on.strftime("%Y/%m/%d")
       %td=calorie_log.calories
+      %td poop
       %td=link_to 'edit', edit_calorie_log_path(calorie_log)
 
 
